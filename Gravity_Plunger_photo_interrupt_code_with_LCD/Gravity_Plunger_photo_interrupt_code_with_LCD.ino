@@ -43,7 +43,7 @@ void loop() {
       lcd.setCursor(0, 1); // Set cursor to the first column of the second row
       lcd.print(timeDifference); // Display time difference on the LCD
       lcd.print(" ms");
-      delay(2000); // Delay for 2 seconds to display the result before clearing the screen
+      //delay(2000); // Delay for 2 seconds to display the result before clearing the screen
     }
     
     // Reset flags and time points for next calculation

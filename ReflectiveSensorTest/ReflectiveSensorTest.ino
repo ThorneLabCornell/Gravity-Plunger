@@ -1,10 +1,10 @@
 #define ANALOG_PIN A0
 volatile int count;
-#define THRESHOLD_LOW 36
-#define THRESHOLD_HIGH 38
+#define THRESHOLD_LOW 40
+#define THRESHOLD_HIGH 42
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(19200);
   pinMode(ANALOG_PIN, INPUT);
 }
 

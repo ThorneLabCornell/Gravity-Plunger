@@ -25,12 +25,12 @@ void loop() {
   lcd.print("Waiting"); // Display label
   while (pg1val > 100) {
     pg1val = analogRead(pg1);
-    Serial.println(pg1val);
+    Serial.println("Waiting for first flag");
   }
   time1 = millis();
   while (pg2val > 100) {
     pg2val = analogRead(pg2);
-    Serial.println(pg2val); 
+    Serial.println("Waiting for second flag"); 
   }
   time2 = millis();
   reactionTime = time2 - time1;

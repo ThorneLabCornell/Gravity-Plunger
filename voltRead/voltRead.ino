@@ -1,4 +1,4 @@
-#define ANALOG_PIN A0
+#define ANALOG_PIN A1
 void setup() {
   Serial.begin(9600);         
   pinMode(ANALOG_PIN, INPUT);  

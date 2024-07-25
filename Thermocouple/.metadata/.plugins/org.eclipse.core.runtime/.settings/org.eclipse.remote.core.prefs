@@ -1,0 +1,6 @@
+connections/org.eclipse.remote.serial.core.connectionType/STM32/serial.baudRate=11
+connections/org.eclipse.remote.serial.core.connectionType/STM32/serial.byteSize=3
+connections/org.eclipse.remote.serial.core.connectionType/STM32/serial.parity=0
+connections/org.eclipse.remote.serial.core.connectionType/STM32/serial.portName=COM7
+connections/org.eclipse.remote.serial.core.connectionType/STM32/serial.stopBits=0
+eclipse.preferences.version=1

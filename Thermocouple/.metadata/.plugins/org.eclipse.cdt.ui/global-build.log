@@ -505,3 +505,10 @@ Finished building: default.size.stdout
  
 Finished building: STM32_THERMOCOUPLE.list
  
+12:23:55 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14036	     92	   4132	  18260	   4754	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 

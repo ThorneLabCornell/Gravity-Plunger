@@ -131,7 +131,7 @@ int main(void)
 			  // Delay to avoid overwhelming the serial port (optional, adjust as needed)
 			  HAL_Delay(5);
 		  }
-		  char msg[] = "\r\nComplete";
+		  char msg[] = "\ncomplete";
 		  uint16_t msgLen = strlen(msg); // Calculate message length
 		  HAL_UART_Transmit(&huart2, (uint8_t*)msg, msgLen, HAL_MAX_DELAY);
 		  complete = 0;

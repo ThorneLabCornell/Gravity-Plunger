@@ -60,3 +60,15 @@ Binding(CTRL+INSERT,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.console.ConsoleView,,,system)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-07-25 10:48:51.316
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 14 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-07-25 10:48:51.316
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-07-25 10:48:51.317
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 14 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2024-07-25 10:48:51.317
+!MESSAGE Existing sessions are:

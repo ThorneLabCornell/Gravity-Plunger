@@ -33,6 +33,8 @@
 /* USER CODE BEGIN PD */
 uint32_t current_temp;
 uint16_t thermoLog[LOG_SIZE] = {0};
+uint32_t log_position = 0;
+volatile uint8_t complete = 0;  // Global flag
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -62,7 +64,20 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+  {
+	log_position = 0;
+	while(log_position<LOG_SIZE)
+	{
+		HAL_ADC_Start(&hadc1);
+		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+		current_temp = HAL_ADC_GetValue(&hadc1);
+		thermoLog[log_position] = current_temp;
+		log_position = log_position+1;
+	}
+	HAL_ADC_Stop_IT(&hadc1);  // Stop ADC when logging is complete
+	complete = 1;
+  }
 /* USER CODE END 0 */
 
 /**
@@ -98,28 +113,30 @@ int main(void)
   MX_ADC1_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-  {
-	  if(GPIO_PIN==11)
-	  {
-		  char msg[10];
-		  HAL_ADC_Start(&hadc1);
-		  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-		  current_temp = HAL_ADC_GetValue(&hadc1);
-	  }
-  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  char msg[10];
-	  HAL_ADC_Start(&hadc1);
-	  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-	  current_temp = HAL_ADC_GetValue(&hadc1);
-	  sprintf(msg, "%u\n", current_temp);
-	  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+
+	  if(complete == 1)
+	  {
+
+		  for (uint32_t i = 0; i < LOG_SIZE; i++)
+		  {
+			  char msg[10];
+			  sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+			  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+			  // Delay to avoid overwhelming the serial port (optional, adjust as needed)
+			  HAL_Delay(5);
+		  }
+		  char msg[] = "\r\nComplete";
+		  uint16_t msgLen = strlen(msg); // Calculate message length
+		  HAL_UART_Transmit(&huart2, (uint8_t*)msg, msgLen, HAL_MAX_DELAY);
+		  complete = 0;
+	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -324,10 +341,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA11 PA12 */
-  GPIO_InitStruct.Pin = GPIO_PIN_11|GPIO_PIN_12;
+  /*Configure GPIO pin : PA11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_11;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/

@@ -1,7 +1,507 @@
-09:47:50 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+10:48:40 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
 make -j20 all 
 arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
    text	   data	    bss	    dec	    hex	filename
-  13428	     92	   2124	  15644	   3d1c	STM32_THERMOCOUPLE.elf
+  13972	     92	  62132	  76196	  129a4	STM32_THERMOCOUPLE.elf
 Finished building: default.size.stdout
+ 
+10:48:43 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13972	     92	  62132	  76196	  129a4	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+10:49:28 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:132:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  132 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:132:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  132 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:132:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:133:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  133 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:133:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  133 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:133:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:138:19: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  138 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                   ^~~~~~~
+../Core/Src/main.c:138:19: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:138:34: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'char *' [-Wformat=]
+  138 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                                 ~^       ~~~~~~
+      |                                  |       |
+      |                                  |       char *
+      |                                  unsigned int
+      |                                 %s
+../Core/Src/main.c:139:61: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  139 |                   HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                             ^~~~~~
+../Core/Src/main.c:139:61: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  13972	     92	  62132	  76196	  129a4	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+10:53:25 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:132:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  132 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:132:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  132 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:132:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:133:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  133 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:133:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  133 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:133:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:138:19: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  138 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                   ^~~~~~~
+../Core/Src/main.c:138:19: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:138:34: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'char *' [-Wformat=]
+  138 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                                 ~^       ~~~~~~
+      |                                  |       |
+      |                                  |       char *
+      |                                  unsigned int
+      |                                 %s
+../Core/Src/main.c:139:61: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  139 |                   HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                             ^~~~~~
+../Core/Src/main.c:139:61: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  13972	     92	  62132	  76196	  129a4	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+10:53:58 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13972	     92	  62132	  76196	  129a4	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+10:54:26 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13972	     92	  62132	  76196	  129a4	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+10:54:33 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13972	     92	  62132	  76196	  129a4	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+10:57:17 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:134:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  134 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:134:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  134 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:134:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:135:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  135 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:135:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  135 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:135:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:140:19: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  140 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                   ^~~~~~~
+../Core/Src/main.c:140:19: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:140:34: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'char *' [-Wformat=]
+  140 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                                 ~^       ~~~~~~
+      |                                  |       |
+      |                                  |       char *
+      |                                  unsigned int
+      |                                 %s
+../Core/Src/main.c:141:61: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  141 |                   HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                             ^~~~~~
+../Core/Src/main.c:141:61: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  14112	     92	  62132	  76336	  12a30	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+11:00:29 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:126:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  126 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:126:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  126 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:126:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:127:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  127 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:127:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  127 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:127:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:132:19: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  132 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                   ^~~~~~~
+../Core/Src/main.c:132:19: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:132:34: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'char *' [-Wformat=]
+  132 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                                 ~^       ~~~~~~
+      |                                  |       |
+      |                                  |       char *
+      |                                  unsigned int
+      |                                 %s
+../Core/Src/main.c:133:61: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  133 |                   HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                             ^~~~~~
+../Core/Src/main.c:133:61: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  14012	     92	   4132	  18236	   473c	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+11:01:01 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14012	     92	   4132	  18236	   473c	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+11:01:59 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:128:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  128 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:128:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  128 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:128:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:129:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  129 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:129:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  129 |                           HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:129:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:134:19: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  134 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                   ^~~~~~~
+../Core/Src/main.c:134:19: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:34: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'char *' [-Wformat=]
+  134 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                                 ~^       ~~~~~~
+      |                                  |       |
+      |                                  |       char *
+      |                                  unsigned int
+      |                                 %s
+../Core/Src/main.c:135:61: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  135 |                   HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                             ^~~~~~
+../Core/Src/main.c:135:61: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  14024	     92	   4132	  18248	   4748	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+11:02:37 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14024	     92	   4132	  18248	   4748	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+11:04:35 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:129:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:129:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:130:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:130:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:130:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:135:19: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  135 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                   ^~~~~~~
+../Core/Src/main.c:135:19: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:135:34: warning: format '%u' expects argument of type 'unsigned int', but argument 3 has type 'char *' [-Wformat=]
+  135 |                   sprintf(msg, "%u\r\n", "Done");  // Print with carriage return
+      |                                 ~^       ~~~~~~
+      |                                  |       |
+      |                                  |       char *
+      |                                  unsigned int
+      |                                 %s
+../Core/Src/main.c:136:61: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  136 |                   HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                             ^~~~~~
+../Core/Src/main.c:136:61: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  14024	     92	   4132	  18248	   4748	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+11:07:21 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:129:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:129:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:130:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:130:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:130:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:135:37: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  135 |                   uint16_t msgLen = strlen(msg); // Calculate message length
+      |                                     ^~~~~~
+../Core/Src/main.c:135:37: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  14028	     92	   4132	  18252	   474c	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+11:20:20 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:129:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:129:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:130:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:130:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:130:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:135:37: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  135 |                   uint16_t msgLen = strlen(msg); // Calculate message length
+      |                                     ^~~~~~
+../Core/Src/main.c:135:37: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  14036	     92	   4132	  18260	   4754	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
+ 
+11:23:47 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14036	     92	   4132	  18260	   4754	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+11:24:47 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14036	     92	   4132	  18260	   4754	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+11:25:47 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+   text	   data	    bss	    dec	    hex	filename
+  14036	     92	   4132	  18260	   4754	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+11:44:14 **** Incremental Build of configuration Debug for project STM32_THERMOCOUPLE ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F411xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:129:27: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:129:27: warning: incompatible implicit declaration of built-in function 'sprintf' [-Wbuiltin-declaration-mismatch]
+  129 |                           sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
+      |                           ^~~~~~~
+../Core/Src/main.c:129:27: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:130:69: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
+   20 | #include "main.h"
+  +++ |+#include <string.h>
+   21 | 
+../Core/Src/main.c:130:69: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  130 |                           HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+      |                                                                     ^~~~~~
+../Core/Src/main.c:130:69: note: include '<string.h>' or provide a declaration of 'strlen'
+../Core/Src/main.c:135:37: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
+  135 |                   uint16_t msgLen = strlen(msg); // Calculate message length
+      |                                     ^~~~~~
+../Core/Src/main.c:135:37: note: include '<string.h>' or provide a declaration of 'strlen'
+arm-none-eabi-gcc -o "STM32_THERMOCOUPLE.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\Thermocouple\STM32_THERMOCOUPLE\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32_THERMOCOUPLE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32_THERMOCOUPLE.elf
+ 
+arm-none-eabi-size  STM32_THERMOCOUPLE.elf 
+arm-none-eabi-objdump -h -S STM32_THERMOCOUPLE.elf  > "STM32_THERMOCOUPLE.list"
+   text	   data	    bss	    dec	    hex	filename
+  14036	     92	   4132	  18260	   4754	STM32_THERMOCOUPLE.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32_THERMOCOUPLE.list
  

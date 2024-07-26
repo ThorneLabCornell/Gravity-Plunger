@@ -1,5 +1,4 @@
 import serial
-import csv
 import numpy as np
 import time
 import pandas as pd
@@ -47,12 +46,13 @@ def process_and_save(timeLog, thermoLog, filename):
     df = pd.DataFrame({'timeLog': timeLog, 'thermoLog': thermoLog})
     df['timeLog'] = df['timeLog'] - df['timeLog'].iloc[0]  # Start time at 0
     df.to_csv(filename, index=False)
+    print(f"Data logged to {csv_filename}")
     return df
 
 # --- Plotting Results ---
 def plot_results(df):
     plt.figure(figsize=(10, 6))
-    plt.plot(df['timeLog'] / 1e9, df['thermoLog'])  # Convert time to seconds
+    plt.plot(df['timeLog'] / 1e6, df['thermoLog'])  # Convert time to seconds
     plt.xlabel('Time (seconds)')
     plt.ylabel('Temperature (Celsius)')
     plt.title('Temperature Over Time')
@@ -65,4 +65,3 @@ if __name__ == "__main__":
     timeLog, thermoLog = collect_data(port, baudrate, LUT)
     df = process_and_save(timeLog, thermoLog, csv_filename)
     plot_results(df)
-    print(f"Data logged to {csv_filename}")

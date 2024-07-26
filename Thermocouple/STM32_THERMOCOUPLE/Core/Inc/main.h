@@ -74,7 +74,7 @@ void Error_Handler(void);
 #define SWO_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
-#define LOG_SIZE 40000
+#define LOG_SIZE 4000
 
 /* USER CODE END Private defines */
 

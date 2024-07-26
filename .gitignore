@@ -1,4 +1,4 @@
 Thermocouple/.metadata/*
 venv/*
 Thermocouple/STM32_THERMOCOUPLE/.metadata/
-logged_data.csv
+*.csv

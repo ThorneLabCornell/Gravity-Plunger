@@ -1,49 +1,60 @@
 import serial
 import csv
-import datetime
 import numpy as np
+import time
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # Configuration
 port = 'COM7'
 baudrate = 115200
-csv_filename = 'logged_data.csv'
+csv_filename = 'test.csv'
+LUT_filename = r"C:\Users\natha\OneDrive\Documents\Thorne Lab\plungecooler\Thermocouple_LUT.txt"
 
-# Establish serial connection
-try:
-    ser = serial.Serial(port, baudrate, timeout=10)  # Timeout for non-blocking reads
-except serial.SerialException as e:
-    print(f"Error connecting to serial port: {e}")
-    exit(1)
-
-thermoLog = []
-timeLog = []
-LUT = np.genfromtxt("C:\Users\natha\OneDrive\Documents\Thorne Lab\plungecooler\Thermocouple_LUT.txt", delimiter=',')
-# Open CSV file for writing
-with open(csv_filename, 'w', newline='') as csvfile:
-    csv_writer = csv.writer(csvfile)
-    csv_writer.writerow(['Timestamp', 'Temperature'])  # Header row
+# --- Serial Connection & Data Collection ---
+def collect_data(port, baudrate, LUT):
+    ser = serial.Serial(port, baudrate, timeout=10)
+    thermoLog = []
+    timeLog = []
+    startTime = time.time_ns()
 
     while True:
         try:
             line = ser.readline().decode().rstrip()
             if line == 'complete':
                 break
-            # Log to lists
-            voltage = (line * (3.3 / (pow(2, 12)-1))) - 1.25
-            input = LUT[:, 2:3].flatten()
-            temperatures = LUT[:, 0:1].flatten()
-            temperatureC = np.interp([voltage], input, temperatures)
+
+            voltage_raw = float(line)
+            voltage = (voltage_raw * (3.3 / (pow(2, 12) - 1))) - 1.25
+            temperatureC = np.interp([voltage], LUT[:, 2:3].flatten(), LUT[:, 0:1].flatten())
             thermoLog.append(temperatureC)
-            timeLog.append(datetime.datetime.now())
-        except UnicodeDecodeError:
-            print("Error decoding serial data. Skipping line.")
-            continue
+            timeLog.append(time.time_ns() - startTime) 
+        except (ValueError, UnicodeDecodeError):
+            print("Error processing serial data. Skipping line.")
 
-    # Write logs to CSV
-    for timestamp, temperature in zip(timeLog, thermoLog):
-        csv_writer.writerow([timestamp.strftime("%H:%M:%S"), temperature])
+    ser.close()
+    return timeLog, thermoLog
 
-# Close serial connection
-ser.close()
+# --- Data Processing & Output ---
+def process_and_save(timeLog, thermoLog, filename):
+    df = pd.DataFrame({'timeLog': timeLog, 'thermoLog': thermoLog})
+    df['timeLog'] = df['timeLog'] - df['timeLog'].iloc[0]  # Start time at 0
+    df.to_csv(filename, index=False)
+    return df
 
-print(f"Data logged to {csv_filename}")
+def plot_results(df):
+    plt.figure(figsize=(10, 6))
+    plt.plot(df['timeLog'] / 1e9, df['thermoLog'])  # Convert time to seconds
+    plt.xlabel('Time (seconds)')
+    plt.ylabel('Temperature (Celsius)')
+    plt.title('Temperature Over Time')
+    plt.grid(True)
+    plt.show()
+
+# --- Main Execution ---
+if __name__ == "__main__":
+    LUT = np.genfromtxt(LUT_filename, delimiter=',')
+    timeLog, thermoLog = collect_data(port, baudrate, LUT)
+    df = process_and_save(timeLog, thermoLog, csv_filename)
+    plot_results(df)
+    print(f"Data logged to {csv_filename}")

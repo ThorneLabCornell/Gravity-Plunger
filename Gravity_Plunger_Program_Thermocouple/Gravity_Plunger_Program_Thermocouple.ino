@@ -19,12 +19,12 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);  // Set the LCD address to 0x27 for a 16 cha
 void setup() {
   Serial.begin(9600); // Initiatize serial communication
   Servo1.attach(servoPin); // Initialize the servo
-  lcd.init();       // Initialize the LCD
-  lcd.backlight();  // Turn on the backlight
+  // lcd.init();       // Initialize the LCD
+  // lcd.backlight();  // Turn on the backlight
   pinMode(button, INPUT);
   pinMode(sensorOne, INPUT); // Initiatize photogate 1
   pinMode(sensorTwo, INPUT); // Initiatize photogate 2
-  pinMode(stmPin, OUTPUT)
+  pinMode(stmPin, OUTPUT);
 }
 
 // Maps servo angle [0,270] with corresponding PWM signal [500,2500] and writes it to PWM
@@ -43,17 +43,17 @@ void loop() {
 
   writePos(90); // Default arm position allows for positioning rod for plunge
   delay(1000); // Wait time to allow for arm to reach position
-  lcd.clear();
+  // lcd.clear();
   delay(50);
-  lcd.setCursor(0, 0);  // Set cursor to the first column of the first row
-  lcd.print("Ready");   // Display label
+  // lcd.setCursor(0, 0);  // Set cursor to the first column of the first row
+  // lcd.print("Ready");   // Display label
 
   
   while (!digitalRead(button)) {} // Wait for activation button to be pressed
   // Initiating plunge
-  lcd.clear();
+  // lcd.clear();
   delay(50);
-  lcd.print("Plunging");
+  // lcd.print("Plunging");
   if (waitTime != 0) { // If wait time is 0, the arm should drop fully to allow for plunge, otherwise only drop by 20 degrees to allow for deposition then pause
     writePos(110);
   } else {
@@ -86,14 +86,14 @@ void loop() {
   // Display reaction time information to LCD
   reactionTime = (reactionEnd - reactionStart) / 1000;
   finalVelocity = (flagLength / float(finalTime - reactionEnd)) * 1000000.0;
-  lcd.clear();
-  delay(100);
-  lcd.setCursor(0, 0);
-  lcd.print(reactionTime);
-  lcd.print("ms");
-  lcd.setCursor(0, 10);
-  lcd.print(finalVelocity);
-  lcd.print("m/s");
+  // lcd.clear();
+  // delay(100);
+  // lcd.setCursor(0, 0);
+  // lcd.print(reactionTime);
+  // lcd.print("ms");
+  // lcd.setCursor(0, 10);
+  // lcd.print(finalVelocity);
+  // lcd.print("m/s");
 
   // Display reaction time information to serial
   Serial.print("Reaction Time: ");

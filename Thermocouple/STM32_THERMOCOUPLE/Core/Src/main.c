@@ -119,7 +119,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-
 	  if(complete == 1)
 	  {
 
@@ -129,13 +128,21 @@ int main(void)
 			  sprintf(msg, "%u\r\n", thermoLog[i]);  // Print with carriage return
 			  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
 			  // Delay to avoid overwhelming the serial port (optional, adjust as needed)
-			  HAL_Delay(5);
+//			  HAL_Delay(5);
 		  }
 		  char msg[] = "\ncomplete";
 		  uint16_t msgLen = strlen(msg); // Calculate message length
 		  HAL_UART_Transmit(&huart2, (uint8_t*)msg, msgLen, HAL_MAX_DELAY);
 		  complete = 0;
 	  }
+
+	  HAL_ADC_Start(&hadc1);
+	  HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+	  current_temp = HAL_ADC_GetValue(&hadc1);
+	  char msg[10];
+	  sprintf(msg, "%u\r\n", current_temp);  // Print with carriage return
+	  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+	  HAL_Delay(500);
 
     /* USER CODE END WHILE */
 

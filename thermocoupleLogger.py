@@ -1,4 +1,7 @@
 import serial
+import csv
+import datetime
+import numpy as np
 
 # Configuration
 port = 'COM7'
@@ -12,22 +15,33 @@ except serial.SerialException as e:
     print(f"Error connecting to serial port: {e}")
     exit(1)
 
+thermoLog = []
+timeLog = []
+LUT = np.genfromtxt("C:\Users\natha\OneDrive\Documents\Thorne Lab\plungecooler\Thermocouple_LUT.txt", delimiter=',')
 # Open CSV file for writing
 with open(csv_filename, 'w', newline='') as csvfile:
+    csv_writer = csv.writer(csvfile)
+    csv_writer.writerow(['Timestamp', 'Temperature'])  # Header row
 
     while True:
         try:
             line = ser.readline().decode().rstrip()
-            print(line)
+            if line == 'complete':
+                break
+            # Log to lists
+            voltage = (line * (3.3 / (pow(2, 12)-1))) - 1.25
+            input = LUT[:, 2:3].flatten()
+            temperatures = LUT[:, 0:1].flatten()
+            temperatureC = np.interp([voltage], input, temperatures)
+            thermoLog.append(temperatureC)
+            timeLog.append(datetime.datetime.now())
         except UnicodeDecodeError:
             print("Error decoding serial data. Skipping line.")
-            continue  # Skip to the next line on decoding errors
+            continue
 
-        if line == 'complete':
-            break  # Exit loop when "complete" is received
-
-        # Write data to CSV
-        csvfile.write(line + '\n')
+    # Write logs to CSV
+    for timestamp, temperature in zip(timeLog, thermoLog):
+        csv_writer.writerow([timestamp.strftime("%H:%M:%S"), temperature])
 
 # Close serial connection
 ser.close()

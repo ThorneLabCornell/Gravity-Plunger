@@ -1,4 +1,4 @@
-#define ANALOG_PIN A0
+#define ANALOG_PIN A1
 void setup() {
   Serial.begin(19200);         
   pinMode(ANALOG_PIN, INPUT);  
@@ -9,5 +9,5 @@ void loop() {
   int rawValue = analogRead(ANALOG_PIN);
   
   Serial.println(rawValue);
-  delay(250);
+  delay(20);
 }

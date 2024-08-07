@@ -1,13 +1,12 @@
 import serial
 import numpy as np
-import time
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # Configuration
 port = 'COM7'
 baudrate = 115200
-csv_filename = 'test.csv'
+csv_filename = '5220_8.csv'
 LUT_filename = r"C:\Users\natha\OneDrive\Documents\Thorne Lab\plungecooler\Thermocouple_LUT.txt"
 
 # --- Serial Connection & Data Collection ---

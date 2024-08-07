@@ -9,7 +9,7 @@ const int button = A3;  // Pin for the activation button
 const int servoPin = 9; // Pin for servo PWM signal
 const int stmPin = 13; // Pin for servo PWM signal
 const float flagLength = 0.013; // [m]
-const int threshold = 750; // adc readout below this value indicates sensor detects flag
+const int threshold = 800; // adc readout below this value indicates sensor detects flag
 int sensorOneVal = 1023; // max value of adc
 int sensorTwoVal = 1023;
 

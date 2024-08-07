@@ -18,7 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include <stdio.h>
+#include <string.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -38,7 +39,6 @@ uint32_t log_position = 0;
 volatile uint8_t start = 0;
 uint32_t timestamp;
 volatile uint8_t complete = 0;
-volatile uint32_t timer2_overflow_count = 0;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -128,7 +128,6 @@ int main(void)
 	  if(start == 1)
 	  {
 		__HAL_TIM_SET_COUNTER(&htim2,0);
-		timer2_overflow_count = 0;
 		log_position = 0;
 		while(log_position<LOG_SIZE)
 		{
@@ -139,7 +138,7 @@ int main(void)
 			thermoLog[log_position] = current_temp;
 			timeLog[log_position] = timestamp;
 			log_position = log_position+1;
-			delay_us(500);
+			delay_us(50);
 
 		}
 		HAL_ADC_Stop_IT(&hadc1);  // Stop ADC when logging is complete

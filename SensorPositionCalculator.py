@@ -33,23 +33,23 @@ platform_position = sensor_position - 201
 
 
 print(f'Desired Timepoint: {timepoint}ms')
-print(f'Estimated Position of Sensor: {sensor_position:.0f}mm')
-print(f'Platform Position: {platform_position:.0f}mm')
+print(f'Estimated Position of Sensor: {sensor_position:.1f}mm')
+print(f'Platform Position: {platform_position:.1f}mm')
 
 
-# # Create the scatter plot
-# plt.figure(figsize=(10, 6))
-# plt.scatter(df['Time'], df['Sensor Pos'], label='Data')
+# Create the scatter plot
+plt.figure(figsize=(10, 6))
+plt.scatter(df['Time'], df['Sensor Pos'], label='Data')
 
-# # Plot the fitted curve
-# plt.plot(df['Time'], y_fit, 'r-', label='Fitted Curve')
+# Plot the fitted curve
+plt.plot(df['Time'], y_fit, 'r-', label='Fitted Curve')
 
-# # Add labels, title, and legend
-# plt.xlabel('Time')
-# plt.ylabel('Sensor Pos')
-# plt.title('Quadratic Fit to Sensor Data')
-# plt.legend()
+# Add labels, title, and legend
+plt.xlabel('Time')
+plt.ylabel('Sensor Pos')
+plt.title('Timepoint vs Sensor Position')
+plt.legend()
 
-# Display the plot
+# Display the plot  
 plt.show()
 

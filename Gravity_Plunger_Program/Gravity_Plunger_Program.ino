@@ -8,7 +8,7 @@ const int sensorTwo = A0;     // Pin for nitrogen level photoelectric sensor
 const int button = A3;  // Pin for the activation button
 const int servoPin = 9; // Pin for servo PWM signal
 const float flagLength = 0.013; // [m]
-const int threshold = 800; // adc readout below this value indicates sensor detects flag
+const int threshold = 875; // adc readout below this value indicates sensor detects flag
 int sensorOneVal = 1023; // max value of adc
 int sensorTwoVal = 1023;
 
@@ -23,6 +23,22 @@ void setup() {
   pinMode(button, INPUT);
   pinMode(sensorOne, INPUT); // Initiatize photogate 1
   pinMode(sensorTwo, INPUT); // Initiatize photogate 2
+}
+
+void wait(unsigned long milliseconds) {
+    unsigned long microseconds = milliseconds * 1000; // Convert milliseconds to microseconds
+
+    // Loop to handle the delay in microseconds
+    while (microseconds > 0) {
+        // If the remaining delay is larger than 16383 (the maximum argument for delayMicroseconds)
+        if (microseconds > 16383) {
+            delayMicroseconds(16383);  // Delay for 16383 microseconds
+            microseconds -= 16383;     // Subtract 16383 microseconds from the remaining delay
+        } else {
+            delayMicroseconds(microseconds); // Delay for the remaining time
+            microseconds = 0;                // Set remaining delay to 0
+        }
+    }
 }
 
 // Maps servo angle [0,270] with corresponding PWM signal [500,2500] and writes it to PWM
@@ -40,17 +56,21 @@ void loop() {
   int reactionTime;
 
   writePos(90); // Default arm position allows for positioning rod for plunge
-  delay(1000); // Wait time to allow for arm to reach position
+  wait(1000); // Wait time to allow for arm to reach position
   lcd.clear();
-  delay(50);
+  wait(50);
   lcd.setCursor(0, 0);  // Set cursor to the first column of the first row
   lcd.print("Ready");   // Display label
+  lcd.setCursor(0,1);
+  lcd.print("Wait: ");
+  lcd.print(waitTime);
+  lcd.print("ms");
 
   
   while (!digitalRead(button)) {} // Wait for activation button to be pressed
   // Initiating plunge
   lcd.clear();
-  delay(50);
+  wait(50);
   lcd.print("Plunging");
   if (waitTime != 0) { // If wait time is 0, the arm should drop fully to allow for plunge, otherwise only drop by 20 degrees to allow for deposition then pause
     writePos(110);
@@ -65,7 +85,7 @@ void loop() {
   
   // Pause Time
   if (waitTime != 0) {
-    delay(waitTime);
+    wait(waitTime);
     writePos(180);
   }
 
@@ -82,7 +102,7 @@ void loop() {
   reactionTime = (reactionEnd - reactionStart) / 1000;
   finalVelocity = (flagLength / float(finalTime - reactionEnd)) * 1000000.0;
   lcd.clear();
-  delay(100);
+  wait(100);
   lcd.setCursor(0, 0);
   lcd.print(reactionTime);
   lcd.print("ms");

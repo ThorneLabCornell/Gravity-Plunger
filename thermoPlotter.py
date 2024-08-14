@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import re
 
 # Read the CSV file
-df1 = pd.read_csv(r'C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\control_4.csv')
-df2 = pd.read_csv(r'C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\3750_4.csv')
-df3 = pd.read_csv(r'C:\Users\natha\OneDrive\Documents\Thorne Lab\Gravity-Plunger\5220_4.csv')
+df1 = pd.read_csv(r'ThermocoupleData\control_4.csv')
+df2 = pd.read_csv(r'ThermocoupleData\3750_4.csv')
+df3 = pd.read_csv(r'ThermocoupleData\5220_4.csv')
 # Function to extract the first numeric value from a string
 def extract_first_numeric(value):
     match = re.search(r"[-+]?\d*\.?\d+", str(value))

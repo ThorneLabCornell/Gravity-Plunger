@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 port = 'COM7'
 baudrate = 115200
 csv_filename = '5220_8.csv'
-LUT_filename = r"C:\Users\natha\OneDrive\Documents\Thorne Lab\plungecooler\Thermocouple_LUT.txt"
+LUT_filename = r"Thermocouple_LUT.txt"
 
 # --- Serial Connection & Data Collection ---
 def collect_data(port, baudrate, LUT):

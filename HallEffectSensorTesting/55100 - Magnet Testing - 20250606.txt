@@ -1,0 +1,4 @@
+No magnet output: 512, output volt: 2.5
+Strength | Output | Diff | Output Volt | Diff Volt
+N48        460      ~50    2.25          0.244
+E822       220      ~290   1.08          1.417

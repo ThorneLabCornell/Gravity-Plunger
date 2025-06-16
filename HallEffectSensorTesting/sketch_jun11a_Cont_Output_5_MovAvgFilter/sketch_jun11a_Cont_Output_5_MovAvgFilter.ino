@@ -8,7 +8,7 @@
 
 const uint8_t  S1_PIN    = A0;
 const uint8_t  S2_PIN    = A1;
-const uint16_t SAMPLE_US = 250;     // 2 kSa/s
+const uint16_t SAMPLE_US = 500;     // 2 kSa/s
 
 /* ---------- 3-point moving-average state ---------- */
 const uint8_t  FILT_N = 3;          // window length

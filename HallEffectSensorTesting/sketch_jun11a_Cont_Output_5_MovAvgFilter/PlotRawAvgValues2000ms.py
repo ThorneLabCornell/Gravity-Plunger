@@ -86,7 +86,7 @@ def save_to_excel(r1, r2, a1, a2):
         'avg1': a1,
         'avg2': a2
     })
-    #df.to_excel(xlsx, index_label='Sample #')
+    df.to_excel(xlsx, index_label='Sample #')
     print(f'Data saved to {xlsx}')
 
 def plot_data(r1, r2, a1, a2):
@@ -106,7 +106,7 @@ def plot_data(r1, r2, a1, a2):
     fname = Path(__file__).with_suffix('')
     ts    = datetime.now().strftime('%Y%m%d_%H%M%S')
     png   = Path(f'{fname}_{ts}.png')
-    #plt.savefig(png, dpi=150)
+    plt.savefig(png, dpi=150)
     print(f'Plot saved to {png}')
 
     plt.show()

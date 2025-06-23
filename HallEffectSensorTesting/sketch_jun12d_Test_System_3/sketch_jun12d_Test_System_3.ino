@@ -23,7 +23,7 @@ const uint16_t TIME_ERR_THRESHOLD_MS = 250;  // NEW
 const float    VEL_ERR_THRESHOLD     = 3.5f; // NEW
 
 /* one-line knob for window width ─────────────── */
-const uint8_t  noMagMargin = 3;
+const uint8_t  noMagMargin = 2;
 
 // ───────── dynamic “no-magnet” windows ─────────
 uint16_t depoSensorMinNoMagnet = 0;
@@ -106,7 +106,7 @@ extern volatile unsigned long timer0_overflow_count;
 extern volatile unsigned long timer0_millis;
 void resetMicros() {
   cli();
-  TCNT0 = 0;
+  //TCNT0 = 0;
   timer0_overflow_count = 0;
   timer0_millis = 0;
   sei();

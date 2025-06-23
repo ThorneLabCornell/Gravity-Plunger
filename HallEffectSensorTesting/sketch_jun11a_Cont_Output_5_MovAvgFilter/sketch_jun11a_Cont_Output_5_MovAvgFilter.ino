@@ -6,8 +6,8 @@
   • Prints: <raw0>,<raw1>,<avg0>,<avg1>
 */
 
-const uint8_t  S1_PIN    = A0;
-const uint8_t  S2_PIN    = A1;
+const uint8_t  DEPO_PIN    = A0;
+const uint8_t  LN2_PIN    = A1;
 const uint16_t SAMPLE_US = 500;     // 2 kSa/s
 
 /* ---------- 3-point moving-average state ---------- */
@@ -28,8 +28,8 @@ void setup()
   delay(100);                       // USB settle
 
   /* prime the filter with the first sample so start-up values are reasonable */
-  uint16_t s1 = analogRead(S1_PIN);
-  uint16_t s2 = analogRead(S2_PIN);
+  uint16_t s1 = analogRead(DEPO_PIN);
+  uint16_t s2 = analogRead(LN2_PIN);
   for (uint8_t i = 0; i < FILT_N; ++i) {
     buf1[i] = s1;  tot1 += s1;
     buf2[i] = s2;  tot2 += s2;
@@ -69,8 +69,8 @@ void loop()
   last = now;
 
   /* raw readings */
-  uint16_t raw1 = analogRead(S1_PIN);
-  uint16_t raw2 = analogRead(S2_PIN);
+  uint16_t raw1 = analogRead(DEPO_PIN);
+  uint16_t raw2 = analogRead(LN2_PIN);
 
   /* update 3-point averages */
   updateMovingAvg(raw1, raw2);
